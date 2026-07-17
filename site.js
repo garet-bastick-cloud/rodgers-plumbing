@@ -16,10 +16,15 @@ hamburger.addEventListener('click', () => {
   hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
-window.closeMobileMenu = function () {
+// Bound here rather than via inline onclick — the CSP script-src has no
+// 'unsafe-inline', so inline handlers in the HTML would be silently blocked.
+function closeMobileMenu() {
   mobileMenu.classList.remove('open');
   hamburger.setAttribute('aria-expanded', 'false');
-};
+}
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
 
 // ── STAT COUNTER ANIMATION ───────────────────────────────────
 function animateStat(el) {
@@ -81,11 +86,12 @@ const SERVICES = [
 
 const stage  = document.getElementById('carousel-stage');
 const dotsEl = document.getElementById('carousel-dots');
-let active   = 0;
-let dragging = false;
-let dragX    = 0;
-let timer    = null;
-const N      = SERVICES.length;
+let active      = 0;
+let dragging    = false;
+let dragX       = 0;
+let dragTarget  = null;
+let timer       = null;
+const N         = SERVICES.length;
 
 // Build cards
 SERVICES.forEach((s, i) => {
@@ -116,16 +122,17 @@ SERVICES.forEach((s, i) => {
   content.append(titleEl, descEl);
   card.append(bg, grad, shine, content);
 
-  card.addEventListener('click', () => { if (i !== active) goTo(i); });
   stage.appendChild(card);
 });
 
-// Build dots
-SERVICES.forEach((_, i) => {
-  const dot = document.createElement('div');
+// Build dots — real <button>s so they're keyboard-focusable and activatable
+SERVICES.forEach((s, i) => {
+  const dot = document.createElement('button');
+  dot.type = 'button';
   dot.className = 'carousel-dot';
   dot.setAttribute('role', 'tab');
-  dot.setAttribute('aria-label', `Service ${i + 1}`);
+  dot.setAttribute('aria-label', `Show service: ${s.title}`);
+  dot.setAttribute('aria-selected', 'false');
   dot.addEventListener('click', () => goTo(i));
   dotsEl.appendChild(dot);
 });
@@ -133,6 +140,9 @@ SERVICES.forEach((_, i) => {
 function render() {
   const cards = stage.children;
   const dots  = dotsEl.children;
+  // Tighter horizontal spread on small screens so the 270px cards
+  // still peek in from the edges instead of sitting fully offscreen
+  const spread = window.innerWidth <= 600 ? 190 : 300;
 
   for (let i = 0; i < N; i++) {
     let off = i - active;
@@ -146,7 +156,7 @@ function render() {
     cards[i].style.display = visible ? '' : 'none';
     if (!visible) continue;
 
-    const tx = off * 300;
+    const tx = off * spread;
     const tz = isActive ? 0 : -100 - abs * 60;
     const ry = off * -15;
     const sc = isActive ? 1 : 1 - abs * 0.08;
@@ -165,6 +175,7 @@ function render() {
     cards[i].querySelector('.carousel-card-bg').style.transform = isActive ? 'scale(1)' : 'scale(1.06)';
     cards[i].classList.toggle('is-active', isActive);
     dots[i].classList.toggle('is-active', isActive);
+    dots[i].setAttribute('aria-selected', String(isActive));
   }
 }
 
@@ -180,8 +191,9 @@ function startTimer() {
 }
 
 stage.addEventListener('pointerdown', e => {
-  dragging = true;
-  dragX = e.clientX;
+  dragging    = true;
+  dragX       = e.clientX;
+  dragTarget  = e.target.closest('.carousel-card');
   stage.setPointerCapture(e.pointerId);
   clearInterval(timer);
 });
@@ -189,22 +201,40 @@ stage.addEventListener('pointerdown', e => {
 stage.addEventListener('pointerup', e => {
   if (!dragging) return;
   const d = e.clientX - dragX;
-  if (d < -40) active = (active + 1) % N;
-  else if (d > 40) active = (active - 1 + N) % N;
-  dragging = false;
+
+  if (Math.abs(d) < 10 && dragTarget) {
+    // Tap (no drag) — advance to the tapped card
+    const idx = Array.from(stage.children).indexOf(dragTarget);
+    if (idx !== -1 && idx !== active) {
+      dragging = false;
+      goTo(idx);
+      return;
+    }
+  } else if (d < -40) {
+    active = (active + 1) % N;
+  } else if (d > 40) {
+    active = (active - 1 + N) % N;
+  }
+
+  dragging    = false;
+  dragTarget  = null;
   render();
   startTimer();
 });
 
 stage.addEventListener('pointerleave', () => {
   if (!dragging) return;
-  dragging = false;
+  dragging    = false;
+  dragTarget  = null;
   render();
   startTimer();
 });
 
 render();
 startTimer();
+
+// Re-layout the carousel when crossing the mobile breakpoint
+window.addEventListener('resize', render, { passive: true });
 
 // ── CONTACT FORM ─────────────────────────────────────────────
 // Posts to /api/contact (Cloudflare Worker) — Make.com URL
@@ -253,8 +283,9 @@ document.getElementById('contact-form').addEventListener('submit', async e => {
     if (!res.ok) throw new Error(data.error || 'Request failed');
 
     sessionStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
-    form.style.display      = 'none';
+    form.style.display      = 'none';   // .form-title lives inside the form, so it hides too
     successEl.style.display = 'block';
+    successEl.focus();                  // move focus so screen readers announce the outcome
 
   } catch (err) {
     errorEl.textContent   = err.message.length < 120
@@ -271,9 +302,33 @@ const stickyCta = document.getElementById('sticky-call');
 const backToTop = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
-  stickyCta.classList.toggle('show', window.scrollY > 400);
-
   const nearBottom =
-    window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100;
+    window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 220;
+
+  // Hide CTA when near the footer so it doesn't clash
+  stickyCta.classList.toggle('show', window.scrollY > 400 && !nearBottom);
   backToTop.classList.toggle('show', nearBottom);
 }, { passive: true });
+
+// Back-to-top click — bound here because inline onclick is blocked by the CSP
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ── CONTACT FORM WIGGLE ON SCROLL INTO VIEW ──────────────────
+const formCard = document.querySelector('.contact-form-card');
+if (formCard) {
+  const wiggleObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      // Small delay so the user sees the card settle first
+      setTimeout(() => {
+        formCard.classList.add('wiggle');
+        formCard.addEventListener('animationend', () => {
+          formCard.classList.remove('wiggle');
+        }, { once: true });
+      }, 250);
+      wiggleObs.disconnect();
+    }
+  }, { threshold: 0.4 });
+  wiggleObs.observe(formCard);
+}
