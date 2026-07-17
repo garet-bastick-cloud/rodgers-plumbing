@@ -40,4 +40,6 @@
   # ── DNS prefetch control ────────────────────────────────────────
   # Prevents browsers pre-resolving domains from anchor hrefs,
   # which can leak browsing behaviour to third-party DNS servers.
+  # Explicit <link rel="dns-prefetch"/"preconnect"> hints in the HTML
+  # (framerusercontent.com, w.behold.so, Google Fonts) still apply.
   X-DNS-Prefetch-Control: off
