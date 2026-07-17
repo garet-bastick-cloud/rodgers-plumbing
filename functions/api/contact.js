@@ -6,11 +6,11 @@
  *
  * SETUP — add this env var in Cloudflare Pages dashboard:
  *   Settings → Environment variables → MAKE_WEBHOOK_URL
- *   Value: https://hook.eu1.make.com/5ar38jn3reo7x568lju1ph9xs0vd4p2f
+ *   Value: your Make.com webhook URL (never commit it to source)
  *
  * For local dev with `wrangler pages dev`:
  *   Create a .dev.vars file (git-ignored) with:
- *   MAKE_WEBHOOK_URL=https://hook.eu1.make.com/5ar38jn3reo7x568lju1ph9xs0vd4p2f
+ *   MAKE_WEBHOOK_URL=<your Make.com webhook URL>
  */
 
 const ALLOWED_ORIGINS = [
@@ -53,7 +53,7 @@ export async function onRequestPost({ request, env }) {
     return json({ error: 'Forbidden' }, 403);
   }
 
-  const cors = { 'Access-Control-Allow-Origin': origin };
+  const cors = { 'Access-Control-Allow-Origin': origin, 'Vary': 'Origin' };
 
   // 2. Parse body
   let body;
@@ -107,14 +107,17 @@ export async function onRequestPost({ request, env }) {
 }
 
 // ── OPTIONS preflight ─────────────────────────────────────────────────────────
-export async function onRequestOptions() {
-  return new Response(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Max-Age': '86400',
-    },
-  });
+// Echo the origin back only if it's on the allow-list — never wildcard.
+export async function onRequestOptions({ request }) {
+  const origin = request.headers.get('Origin') || '';
+  const headers = {
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Max-Age': '86400',
+    'Vary': 'Origin',
+  };
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    headers['Access-Control-Allow-Origin'] = origin;
+  }
+  return new Response(null, { status: 204, headers });
 }
