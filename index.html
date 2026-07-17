@@ -15,6 +15,9 @@
   <link rel="canonical" href="https://rodgers-plumbing.com.au/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://framerusercontent.com" />
+  <link rel="dns-prefetch" href="https://framerusercontent.com" />
+  <link rel="dns-prefetch" href="https://w.behold.so" />
   <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ========================================
@@ -34,6 +37,59 @@
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
     button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ========================================
+       ACCESSIBILITY HELPERS
+       ======================================== */
+    /* Skip link — hidden until focused via keyboard */
+    .skip-link {
+      position: absolute;
+      top: -60px; left: 16px;
+      z-index: 300;
+      padding: 10px 18px;
+      background: #fff;
+      color: #000;
+      border-radius: 0 0 10px 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* Visible keyboard focus — mid-blue reads on both black and white sections */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 3px;
+    }
+    .form-field input:focus-visible,
+    .form-field textarea:focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 1px;
+    }
+
+    /* Anchored sections must clear the 64px fixed nav */
+    section[id] { scroll-margin-top: 76px; }
+
+    /* Honeypot — visually removed but present in the DOM for bots */
+    .hp-field {
+      position: absolute;
+      left: -9999px; top: -9999px;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+    .mt-6 { margin-top: 6px; }
+
+    /* Respect users who turn animations off */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
 
     /* ========================================
        VARIABLES
@@ -59,9 +115,9 @@
       border-bottom: 1px solid transparent;
     }
     .nav.scrolled {
-      background-color: rgba(0,0,0,0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background-color: rgba(0,0,0,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom-color: rgba(255,255,255,0.08);
     }
     .nav-logo img { height: 32px; width: auto; }
@@ -149,7 +205,10 @@
        ======================================== */
     #hero {
       min-height: 100vh;
-      background: #000;
+      /* Faint deep-blue glow lifts the hero off flat black — on brand for water */
+      background:
+        radial-gradient(ellipse 75% 55% at 50% 32%, rgba(14, 80, 165, 0.16), transparent 70%),
+        #000;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -186,13 +245,16 @@
       margin: 6px 0;
     }
     .chip {
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 7px 16px;
-      border: 1px solid rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 999px;
-      color: #fff;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.9);
       font-size: 0.8rem;
       font-weight: 500;
       letter-spacing: 0.02em;
@@ -202,9 +264,25 @@
     .chip:nth-child(1) { animation-delay: 0s; }
     .chip:nth-child(2) { animation-delay: 1.07s; }
     .chip:nth-child(3) { animation-delay: 2.13s; }
+    .chip::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+      animation: chip-shine 3.2s ease-in-out infinite;
+    }
+    .chip:nth-child(1)::after { animation-delay: 0s; }
+    .chip:nth-child(2)::after { animation-delay: 1.07s; }
+    .chip:nth-child(3)::after { animation-delay: 2.13s; }
+    @keyframes chip-shine {
+      0%, 35%  { left: -100%; }
+      65%, 100% { left: 200%; }
+    }
     @keyframes twinkle {
-      0%, 100% { border-color: rgba(255,255,255,0.22); }
-      50% { border-color: rgba(255,255,255,0.65); box-shadow: 0 0 8px rgba(255,255,255,0.1); }
+      0%, 100% { border-color: rgba(255,255,255,0.2); }
+      50% { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 10px rgba(255,255,255,0.12); }
     }
     .btn-primary {
       display: inline-flex;
@@ -220,6 +298,27 @@
       transition: background 0.2s, transform 0.15s;
     }
     .btn-primary:hover { background: rgba(255,255,255,0.88); transform: translateY(-1px); }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.45); transform: translateY(-1px); }
 
     /* ========================================
        MARQUEE STRIP
@@ -276,7 +375,9 @@
     /* ========================================
        ABOUT
        ======================================== */
-    #about { background: #000; }
+    #about { background: #fff; }
+    #about .h2 { color: #000; }
+    #about .body-l { color: rgba(0,0,0,0.6); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -309,7 +410,8 @@
       gap: 20px;
       flex-wrap: wrap;
       justify-content: space-around;
-      background: #fff;
+      background: rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.07);
       border-radius: 15px;
       padding: 40px 32px;
       margin-top: 60px;
@@ -447,6 +549,19 @@
       letter-spacing: -0.02em;
     }
     .testimonial-author { font-size: 0.88rem; color: #777; }
+    .reviews-google-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .reviews-google-link:hover { color: #000; }
 
     /* ========================================
        ON THE TOOLS
@@ -714,29 +829,98 @@
       align-items: center;
       gap: 10px;
       padding: 14px 28px;
-      background: #1a73e8;
+      background: #0c4fb5;
       color: #fff;
       border-radius: 999px;
       font-size: 0.95rem;
       font-weight: 600;
       white-space: nowrap;
-      box-shadow: 0 8px 32px rgba(26,115,232,0.35), 0 2px 8px rgba(0,0,0,0.25);
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease, background 0.2s;
+      box-shadow: 0 8px 32px rgba(14,165,233,0.45), 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
       opacity: 0;
+      overflow: hidden;
+      isolation: isolate;
     }
     .sticky-call.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    .sticky-call:hover { background: #1557b0; }
+    /* Water swirl — rotating conic gradient clipped to the pill */
+    .sticky-call::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 300%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg at 50% 50%,
+        #0a3d9e 0deg,
+        #1a73e8 55deg,
+        #5bbaff 115deg,
+        #0ea5e9 175deg,
+        #0c55b5 235deg,
+        #0369a1 295deg,
+        #0a3d9e 360deg
+      );
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: water-swirl 5s linear infinite;
+      z-index: -1;
+    }
+    /* Light caustic shimmer */
+    .sticky-call::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        108deg,
+        transparent 25%,
+        rgba(255,255,255,0.22) 44%,
+        rgba(255,255,255,0.09) 56%,
+        transparent 74%
+      );
+      animation: water-shimmer 2.8s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes water-swirl {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @keyframes water-shimmer {
+      0%   { opacity: 0.5; transform: translateX(-18px); }
+      50%  { opacity: 1;   transform: translateX(18px); }
+      100% { opacity: 0.5; transform: translateX(-18px); }
+    }
     .call-dot {
+      position: relative;
+      z-index: 1;
       width: 8px; height: 8px;
       border-radius: 50%;
       background: #4ade80;
       flex-shrink: 0;
       animation: pulse-dot 2s infinite;
     }
+    .call-label {
+      position: relative;
+      z-index: 1;
+    }
     @keyframes pulse-dot {
       0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
       70% { box-shadow: 0 0 0 7px rgba(74,222,128,0); }
       100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+    }
+
+    /* ========================================
+       FORM WIGGLE
+       ======================================== */
+    @keyframes form-wiggle {
+      0%   { transform: translateX(0) rotate(0deg); }
+      15%  { transform: translateX(-5px) rotate(-0.4deg); }
+      30%  { transform: translateX(5px) rotate(0.4deg); }
+      45%  { transform: translateX(-3px) rotate(-0.2deg); }
+      60%  { transform: translateX(3px) rotate(0.2deg); }
+      75%  { transform: translateX(-1px); }
+      100% { transform: translateX(0); }
+    }
+    .contact-form-card.wiggle {
+      animation: form-wiggle 0.65s ease-out;
     }
 
     /* ========================================
@@ -767,6 +951,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- NAV -->
   <nav class="nav" id="nav">
     <a href="/" class="nav-logo">
@@ -776,6 +962,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact-1">Contact</a></li>
     </ul>
     <a href="tel:0401769948" class="nav-cta">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -783,18 +970,22 @@
       </svg>
       Call David
     </a>
-    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <div class="nav-mobile-menu" id="mobile-menu" role="navigation">
-    <a href="#services" onclick="closeMobileMenu()">Services</a>
-    <a href="#about" onclick="closeMobileMenu()">About</a>
-    <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
-    <a href="#contact-1" onclick="closeMobileMenu()">Contact</a>
+  <!-- Menu-close handlers are bound in site.js — inline onclick would be
+       blocked by the CSP (script-src has no 'unsafe-inline') -->
+  <div class="nav-mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact-1">Contact</a>
     <a href="tel:0401769948" class="mobile-cta">Call David — 0401 769 948</a>
   </div>
+
+  <main id="main">
 
   <!-- HERO -->
   <section id="hero">
@@ -806,7 +997,10 @@
         <span class="chip">✓ Licensed &amp; Fully Insured</span>
         <span class="chip">✓ Northern Beaches Local</span>
       </div>
-      <a href="#contact-1" class="btn-primary">Contact</a>
+      <div class="hero-cta-row">
+        <a href="tel:0401769948" class="btn-primary">Call 0401 769 948</a>
+        <a href="#contact-1" class="btn-secondary">Get a Quote</a>
+      </div>
     </div>
   </section>
 
@@ -864,7 +1058,7 @@
     <div class="container">
       <h2 class="h2">Every Job, Done to a Standard.</h2>
       <div class="carousel-wrap">
-        <div class="carousel-stage" id="carousel-stage"></div>
+        <div class="carousel-stage" id="carousel-stage" role="group" aria-roledescription="carousel" aria-label="Plumbing services"></div>
         <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Service slides"></div>
       </div>
     </div>
@@ -880,6 +1074,7 @@
         <p class="testimonial-quote">"I can't recommend David highly enough. He's done work both at my house — sorting everything from toilets and showers to a new vanity unit — and my parents' house for easy fixes and the odd emergency. In both circumstances he was punctual, efficient, knowledgeable, friendly, clean and more than fair with his pricing."</p>
         <div class="testimonial-author">Nic Dennis · Google Review</div>
       </div>
+      <a href="https://g.page/r/CeIw4HrxgHkZEAE/review" target="_blank" rel="noopener noreferrer" class="reviews-google-link">Had David out recently? Leave a review on Google →</a>
     </div>
   </section>
 
@@ -907,14 +1102,14 @@
       </div>
       <div>
         <div class="contact-form-card">
-          <div id="form-success" class="form-success">
+          <div id="form-success" class="form-success" role="status" aria-live="polite" tabindex="-1">
             <div class="form-success-title">Cheers!</div>
             <div class="form-success-sub">We'll be in touch soon.</div>
           </div>
           <form id="contact-form">
             <div class="form-title">Tell us what you need</div>
             <!-- Honeypot — invisible to humans, filled by bots -->
-            <div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden;opacity:0;" aria-hidden="true">
+            <div class="hp-field" aria-hidden="true">
               <label for="website">Leave this blank</label>
               <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
             </div>
@@ -937,12 +1132,14 @@
               </div>
             </div>
             <button type="submit" class="btn-submit" id="submit-btn">Send Enquiry</button>
-            <div class="form-error-msg" id="form-error">Something went wrong — please try again.</div>
+            <div class="form-error-msg" id="form-error" role="alert">Something went wrong — please try again.</div>
           </form>
         </div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer>
@@ -976,7 +1173,7 @@
     </div>
 
     <div class="footer-top">
-      <img src="https://framerusercontent.com/images/pRqdhZYJE505x14Qnt74DBlVtQY.jpg" alt="Rodgers Plumbing &amp; Drainage" class="footer-logo" />
+      <img src="https://framerusercontent.com/images/pRqdhZYJE505x14Qnt74DBlVtQY.jpg" alt="Rodgers Plumbing &amp; Drainage logo" class="footer-logo" loading="lazy" />
       <div class="footer-tagline-label">Done Right. No Drama.</div>
       <div class="footer-tagline-sub">Licensed plumber · Northern Beaches Sydney · Blocked drains, gasfitting, hot water &amp; emergency repairs</div>
       <a href="https://g.page/r/CeIw4HrxgHkZEAE/review" target="_blank" rel="noopener noreferrer" class="footer-review-link">
@@ -992,7 +1189,7 @@
           <a href="tel:0401769948" class="phone">0401 769 948</a>
           <a href="mailto:david@rodgers-plumbing.com.au" class="email">david@rodgers-plumbing.com.au</a>
           <span class="meta">Mon–Fri 7am–5pm · 24/7 Emergency</span>
-          <span class="meta-sm" style="margin-top:6px">Lic. No. 487795C</span>
+          <span class="meta-sm mt-6">Lic. No. 487795C</span>
           <span class="meta-sm">ABN 99 679 344 499</span>
         </div>
       </div>
@@ -1014,7 +1211,8 @@
 
     <div class="footer-bottom">
       <span class="footer-copyright">© 2026 Rodgers Plumbing and Drainage Pty Ltd</span>
-      <button class="back-to-top" id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <!-- Click handler lives in site.js — inline onclick is blocked by the CSP -->
+      <button class="back-to-top" id="back-to-top" aria-label="Back to top">
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
         </svg>
@@ -1025,7 +1223,7 @@
   <!-- STICKY CALL -->
   <a href="tel:0401769948" class="sticky-call" id="sticky-call" aria-label="Call David Rodgers now">
     <span class="call-dot" aria-hidden="true"></span>
-    Call David Now &nbsp;·&nbsp; 0401 769 948
+    <span class="call-label">Call David Now &nbsp;·&nbsp; 0401 769 948</span>
   </a>
 
   <!-- Behold Instagram widget -->
