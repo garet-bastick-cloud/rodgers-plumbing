@@ -1,0 +1,43 @@
+# Cloudflare Pages security headers
+# Applies to all routes. API routes get their CORS headers from the Worker.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  # ── Clickjacking ───────────────────────────────────────────────
+  # Prevents the site being embedded in an iframe (phishing vector).
+  X-Frame-Options: DENY
+
+  # ── MIME sniffing ──────────────────────────────────────────────
+  # Stops browsers guessing content types — prevents script injection
+  # via uploaded files with wrong MIME types.
+  X-Content-Type-Options: nosniff
+
+  # ── Referrer leakage ───────────────────────────────────────────
+  # Sends origin only (no path) to third parties.
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # ── HTTPS enforcement ──────────────────────────────────────────
+  # Tells browsers to only ever use HTTPS for this domain.
+  # 2-year max-age + includeSubDomains satisfies the HSTS preload list.
+  # Once you're confident, submit at https://hstspreload.org
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # ── Browser feature restrictions ───────────────────────────────
+  # Prevents any script (including Behold widget) from accessing
+  # camera, mic, location, payment, USB, or motion sensors.
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
+
+  # ── Content Security Policy ────────────────────────────────────
+  # Because site.js is now external, we don't need unsafe-inline for scripts.
+  # 'unsafe-inline' in style-src is still required for JS-set style= attributes
+  # (carousel transforms, etc). This is a known trade-off for dynamic inline styles.
+  #
+  # img-src includes Instagram CDN domains used by the Behold widget.
+  # If some Behold images don't load after deploy, check DevTools console
+  # for blocked domains and add them here.
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://w.behold.so; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://framerusercontent.com https://*.behold.so https://*.cdninstagram.com https://*.fbcdn.net data: blob:; connect-src 'self' https://*.behold.so; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;
+
+  # ── DNS prefetch control ────────────────────────────────────────
+  # Prevents browsers pre-resolving domains from anchor hrefs,
+  # which can leak browsing behaviour to third-party DNS servers.
+  X-DNS-Prefetch-Control: off

@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rodgers Plumbing &amp; Drainage | Northern Beaches Plumber</title>
+  <meta name="description" content="Licensed Northern Beaches plumber. Blocked drains, gasfitting, new builds &amp; emergency repairs. Call David direct: 0401 769 948. Local, honest, done right." />
+  <meta name="robots" content="max-image-preview:large" />
+  <meta property="og:title" content="Rodgers Plumbing &amp; Drainage | Northern Beaches Plumber" />
+  <meta property="og:description" content="Licensed Northern Beaches plumber. Blocked drains, gasfitting, new builds &amp; emergency repairs. Call David direct: 0401 769 948. Local, honest, done right." />
+  <meta property="og:image" content="https://framerusercontent.com/images/neIYP0trsbQCnT9rp4xPvk8gXYQ.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rodgers-plumbing.com.au/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://rodgers-plumbing.com.au/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ========================================
+       VARIABLES
+       ======================================== */
+    :root {
+      --max-w: 1200px;
+      --section-pad: 125px 30px;
+    }
+
+    /* ========================================
+       NAV
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 30px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background-color: rgba(0,0,0,0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 24px;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(0,0,0,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 30px 30px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-mobile-menu .mobile-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    #hero {
+      min-height: 100vh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 30px 80px;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .hero-h1 {
+      font-family: 'Afacad', sans-serif;
+      font-size: clamp(3rem, 7vw, 4.7rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: #fff;
+    }
+    .hero-body {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 520px;
+      letter-spacing: -0.02em;
+    }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 6px 0;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      animation: twinkle 3.2s ease-in-out infinite;
+    }
+    .chip:nth-child(1) { animation-delay: 0s; }
+    .chip:nth-child(2) { animation-delay: 1.07s; }
+    .chip:nth-child(3) { animation-delay: 2.13s; }
+    @keyframes twinkle {
+      0%, 100% { border-color: rgba(255,255,255,0.22); }
+      50% { border-color: rgba(255,255,255,0.65); box-shadow: 0 0 8px rgba(255,255,255,0.1); }
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 36px;
+      background: #fff;
+      color: #000;
+      border-radius: 999px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: rgba(255,255,255,0.88); transform: translateY(-1px); }
+
+    /* ========================================
+       MARQUEE STRIP
+       ======================================== */
+    .marquee-strip {
+      background: #000;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 32px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .marquee-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      flex-shrink: 0;
+    }
+
+    /* ========================================
+       SECTION WRAPPER
+       ======================================== */
+    .section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--section-pad);
+    }
+    .container { width: 100%; max-width: var(--max-w); }
+
+    /* ========================================
+       ABOUT
+       ======================================== */
+    #about { background: #000; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .about-image {
+      width: 100%;
+      height: 500px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text { display: flex; flex-direction: column; gap: 20px; }
+    .h2 {
+      font-family: 'Afacad', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+    .body-l {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.7;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.65);
+    }
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background: #fff;
+      border-radius: 15px;
+      padding: 40px 32px;
+      margin-top: 60px;
+    }
+    .stat-item { text-align: center; min-width: 100px; }
+    .stat-number {
+      font-family: 'Afacad', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #000;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .stat-label { font-size: 0.82rem; color: rgba(0,0,0,0.5); margin-top: 6px; }
+
+    /* ========================================
+       SERVICES
+       ======================================== */
+    #services { background: #111; }
+    #services .h2 { color: #fff; margin-bottom: 40px; }
+
+    .carousel-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 20px 0 20px;
+      user-select: none;
+      touch-action: pan-y;
+    }
+    .carousel-stage {
+      width: 100%;
+      height: 440px;
+      position: relative;
+      perspective: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-card {
+      position: absolute;
+      width: 340px;
+      height: 420px;
+      border-radius: 24px;
+      overflow: hidden;
+      will-change: transform, opacity;
+    }
+    .carousel-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.65s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .carousel-card-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.82) 100%);
+    }
+    .carousel-card-shine {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 55%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .carousel-card.is-active .carousel-card-shine { opacity: 1; }
+    .carousel-card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .carousel-card-title {
+      font-family: 'Afacad', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .carousel-card-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.55;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.45s ease 0.2s, transform 0.45s ease 0.2s;
+    }
+    .carousel-card.is-active .carousel-card-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+    .carousel-dot {
+      height: 7px;
+      width: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.28);
+      cursor: pointer;
+      transition: width 0.45s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.3s ease;
+    }
+    .carousel-dot.is-active { width: 28px; background: #fff; }
+
+    /* ========================================
+       TESTIMONIALS
+       ======================================== */
+    #reviews { background: #fff; }
+    #reviews .h2 { color: #000; }
+    #reviews .body-l { color: #777; margin-top: 16px; }
+    .testimonial-card {
+      max-width: 680px;
+      background: rgba(0,0,0,0.04);
+      border-radius: 15px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .testimonial-stars {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000;
+      letter-spacing: -0.02em;
+    }
+    .testimonial-quote {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+      letter-spacing: -0.02em;
+    }
+    .testimonial-author { font-size: 0.88rem; color: #777; }
+
+    /* ========================================
+       ON THE TOOLS
+       ======================================== */
+    #instagram { background: #000; }
+    .instagram-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 60px;
+      max-width: 600px;
+    }
+    .instagram-header .h2 { color: #fff; }
+    .instagram-subtext { font-size: 1rem; color: rgba(255,255,255,0.5); letter-spacing: -0.02em; }
+    .instagram-subtext a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .instagram-subtext a:hover { color: #fff; }
+
+    /* ========================================
+       CONTACT
+       ======================================== */
+    #contact-1 {
+      background: #fff;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 80px 30px;
+    }
+    #contact-1 .container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 12px;
+    }
+    .contact-sidebar-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 4px;
+    }
+    .contact-sidebar-primary { font-size: 0.95rem; color: rgba(0,0,0,0.7); line-height: 1.6; }
+    .contact-sidebar-sub { font-size: 0.82rem; color: rgba(0,0,0,0.4); }
+    .contact-sidebar-divider { border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 8px 0; }
+    .contact-sidebar-meta { font-size: 0.72rem; color: rgba(0,0,0,0.35); }
+    .contact-form-card {
+      background: #fff;
+      border-radius: 15px;
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 40px;
+      max-width: 500px;
+    }
+    .form-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 28px;
+    }
+    .form-fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-size: 0.78rem; font-weight: 600; color: rgba(0,0,0,0.5); letter-spacing: 0.02em; }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 11px 15px;
+      border: 1px solid rgba(0,0,0,0.14);
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.93rem;
+      color: #111;
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      resize: vertical;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: rgba(0,0,0,0.35); background: #fff; }
+    .form-field textarea { min-height: 110px; }
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #000;
+      color: #fff;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: #1a1a1a; transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
+    }
+    .form-success-title {
+      font-family: 'Afacad', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 8px;
+    }
+    .form-success-sub { font-size: 1rem; color: #777; }
+    .form-error-msg {
+      display: none;
+      font-size: 0.82rem;
+      color: rgb(200,40,40);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    footer {
+      background: #000;
+      border-radius: 24px 24px 0 0;
+      margin-top: -24px;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .footer-suburb-marquee {
+      overflow: hidden;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      -webkit-mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+    }
+    .footer-suburb-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 25s linear infinite;
+    }
+    .footer-suburb-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 28px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      white-space: nowrap;
+    }
+    .footer-suburb-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+    }
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 52px 48px 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    .footer-logo { height: 52px; width: auto; object-fit: contain; }
+    .footer-tagline-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-top: 4px;
+    }
+    .footer-tagline-sub { font-size: 0.68rem; color: rgba(255,255,255,0.35); max-width: 460px; }
+    .footer-review-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-review-link:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 48px;
+    }
+    .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+    .footer-col + .footer-col {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 48px;
+    }
+    .footer-col-head {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 16px;
+    }
+    .footer-col-links { display: flex; gap: 28px; }
+    .footer-links-group { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links-group a { font-size: 0.78rem; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .footer-links-group a:hover { color: #fff; }
+    .footer-contact-info { display: flex; flex-direction: column; gap: 7px; }
+    .footer-contact-info .phone { font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 500; transition: color 0.2s; }
+    .footer-contact-info .phone:hover { color: #fff; }
+    .footer-contact-info .email { font-size: 0.72rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-contact-info .email:hover { color: rgba(255,255,255,0.85); }
+    .footer-contact-info .meta { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
+    .footer-contact-info .meta-sm { font-size: 0.68rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copyright { font-size: 0.68rem; color: rgba(255,255,255,0.4); }
+    .back-to-top {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s;
+      pointer-events: none;
+    }
+    .back-to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-to-top:hover { background: rgba(255,255,255,0.14); }
+
+    /* ========================================
+       STICKY CTA
+       ======================================== */
+    .sticky-call {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      z-index: 200;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: #1a73e8;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(26,115,232,0.35), 0 2px 8px rgba(0,0,0,0.25);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease, background 0.2s;
+      opacity: 0;
+    }
+    .sticky-call.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .sticky-call:hover { background: #1557b0; }
+    .call-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      flex-shrink: 0;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+      70% { box-shadow: 0 0 0 7px rgba(74,222,128,0); }
+      100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 900px) {
+      :root { --section-pad: 80px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-image { height: 320px; }
+      #contact-1 .container { grid-template-columns: 1fr; gap: 0; }
+      .contact-sidebar { display: none; }
+      .contact-form-card { max-width: 100%; }
+      .footer-columns { grid-template-columns: 1fr; padding: 28px 24px; gap: 28px; }
+      .footer-col + .footer-col { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 28px; }
+      .footer-col { align-items: center; text-align: center; }
+      .footer-top { padding: 40px 24px 28px; }
+      .footer-bottom { padding: 16px 24px; justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      .carousel-stage { height: 380px; }
+      .carousel-card { width: 270px; height: 350px; }
+      .contact-form-card { padding: 28px 20px; }
+      #hero { padding: 100px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="/" class="nav-logo">
+      <img src="https://framerusercontent.com/images/pRqdhZYJE505x14Qnt74DBlVtQY.jpg" alt="Rodgers Plumbing &amp; Drainage" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="tel:0401769948" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
+      </svg>
+      Call David
+    </a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile-menu" id="mobile-menu" role="navigation">
+    <a href="#services" onclick="closeMobileMenu()">Services</a>
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
+    <a href="#contact-1" onclick="closeMobileMenu()">Contact</a>
+    <a href="tel:0401769948" class="mobile-cta">Call David — 0401 769 948</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <h1 class="hero-h1">Done Right. No Drama.</h1>
+      <p class="hero-body">Residential and commercial plumbing for the Northern Beaches. Blocked drains, gasfitting, new builds, CCTV inspection — done properly, on time, by a local who gives a damn.</p>
+      <div class="hero-chips">
+        <span class="chip">✓ 10 Years Experience</span>
+        <span class="chip">✓ Licensed &amp; Fully Insured</span>
+        <span class="chip">✓ Northern Beaches Local</span>
+      </div>
+      <a href="#contact-1" class="btn-primary">Contact</a>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">✓ Licensed &amp; Fully Insured</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ No Call-Out Fees</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Same-Day Response</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Northern Beaches Local</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 10 Years Experience</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Direct Line to David</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 24/7 Emergency Callouts</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Licensed &amp; Fully Insured</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ No Call-Out Fees</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Same-Day Response</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Northern Beaches Local</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 10 Years Experience</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Direct Line to David</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 24/7 Emergency Callouts</span><span class="marquee-dot"></span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://framerusercontent.com/images/fYpxodx3aozbcJNZvYvJQjsuPg.jpeg" alt="David Rodgers, Northern Beaches plumber" loading="lazy" />
+        </div>
+        <div class="about-text">
+          <h2 class="h2">A Northern Beaches Plumber Who Shows Up.</h2>
+          <p class="body-l">David Rodgers has been fixing, fitting, and building on the Northern Beaches for over a decade. While other companies put you through a call centre and send whoever's available, with Rodgers Plumbing &amp; Drainage you're dealing directly with the tradesman — from the first call to the final invoice.</p>
+        </div>
+      </div>
+      <div class="stats-row" id="stats-row">
+        <div class="stat-item">
+          <div class="stat-number" data-target="10" data-suffix="+">0+</div>
+          <div class="stat-label">Years of service</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500" data-suffix="+">0+</div>
+          <div class="stat-label">Projects completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="5" data-suffix="★">0★</div>
+          <div class="stat-label">Average Google rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="h2">Every Job, Done to a Standard.</h2>
+      <div class="carousel-wrap">
+        <div class="carousel-stage" id="carousel-stage"></div>
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Service slides"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="reviews" class="section">
+    <div class="container">
+      <h2 class="h2">Don't Just Take His Word For It.</h2>
+      <p class="body-l">Real reviews from Northern Beaches locals.</p>
+      <div class="testimonial-card">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testimonial-quote">"I can't recommend David highly enough. He's done work both at my house — sorting everything from toilets and showers to a new vanity unit — and my parents' house for easy fixes and the odd emergency. In both circumstances he was punctual, efficient, knowledgeable, friendly, clean and more than fair with his pricing."</p>
+        <div class="testimonial-author">Nic Dennis · Google Review</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ON THE TOOLS -->
+  <section id="instagram" class="section">
+    <div class="container">
+      <div class="instagram-header">
+        <h2 class="h2">On The Tools.</h2>
+        <p class="instagram-subtext">Photos from the job site. <a href="https://www.instagram.com/rodgersplumbinganddrainage/" target="_blank" rel="noopener noreferrer">Follow along 📷</a></p>
+      </div>
+      <behold-widget feed-id="IC7pQnpnUAVYuQkOpMde"></behold-widget>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact-1">
+    <div class="container">
+      <div class="contact-sidebar">
+        <div class="contact-sidebar-label">Get In Touch</div>
+        <div class="contact-sidebar-primary">Prefer to talk? David picks up.</div>
+        <div class="contact-sidebar-sub">Mon–Fri 7am–5pm · 24/7 Emergency</div>
+        <hr class="contact-sidebar-divider" />
+        <div class="contact-sidebar-meta">ABN 99 679 344 499</div>
+        <div class="contact-sidebar-meta">Contractor Licence 487795C</div>
+      </div>
+      <div>
+        <div class="contact-form-card">
+          <div id="form-success" class="form-success">
+            <div class="form-success-title">Cheers!</div>
+            <div class="form-success-sub">We'll be in touch soon.</div>
+          </div>
+          <form id="contact-form">
+            <div class="form-title">Tell us what you need</div>
+            <!-- Honeypot — invisible to humans, filled by bots -->
+            <div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden;opacity:0;" aria-hidden="true">
+              <label for="website">Leave this blank</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="form-fields">
+              <div class="form-field">
+                <label for="f-name">Your Name</label>
+                <input type="text" id="f-name" name="name" placeholder="Your name" required autocomplete="name" maxlength="100" />
+              </div>
+              <div class="form-field">
+                <label for="f-email">Your Email</label>
+                <input type="email" id="f-email" name="email" placeholder="you@example.com.au" required autocomplete="email" maxlength="254" />
+              </div>
+              <div class="form-field">
+                <label for="f-suburb">Your Suburb</label>
+                <input type="text" id="f-suburb" name="suburb" placeholder="Manly" autocomplete="address-level2" maxlength="100" />
+              </div>
+              <div class="form-field">
+                <label for="f-message">What do you need?</label>
+                <textarea id="f-message" name="message" placeholder="Blocked drain, hot water system, renovation..." maxlength="2000"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit" id="submit-btn">Send Enquiry</button>
+            <div class="form-error-msg" id="form-error">Something went wrong — please try again.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-suburb-marquee" aria-hidden="true">
+      <div class="footer-suburb-track">
+        <div class="footer-suburb-item"><span>Manly</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Dee Why</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Narrabeen</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Mona Vale</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Avalon</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Newport</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Palm Beach</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Collaroy</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Curl Curl</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Freshwater</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Brookvale</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Seaforth</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Manly</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Dee Why</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Narrabeen</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Mona Vale</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Avalon</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Newport</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Palm Beach</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Collaroy</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Curl Curl</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Freshwater</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Brookvale</span><span class="footer-suburb-dot"></span></div>
+        <div class="footer-suburb-item"><span>Seaforth</span><span class="footer-suburb-dot"></span></div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <img src="https://framerusercontent.com/images/pRqdhZYJE505x14Qnt74DBlVtQY.jpg" alt="Rodgers Plumbing &amp; Drainage" class="footer-logo" />
+      <div class="footer-tagline-label">Done Right. No Drama.</div>
+      <div class="footer-tagline-sub">Licensed plumber · Northern Beaches Sydney · Blocked drains, gasfitting, hot water &amp; emergency repairs</div>
+      <a href="https://g.page/r/CeIw4HrxgHkZEAE/review" target="_blank" rel="noopener noreferrer" class="footer-review-link">
+        <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="rgba(255,220,50,0.9)"/></svg>
+        Leave us a Google Review
+      </a>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-col">
+        <div class="footer-col-head">Contact</div>
+        <div class="footer-contact-info">
+          <a href="tel:0401769948" class="phone">0401 769 948</a>
+          <a href="mailto:david@rodgers-plumbing.com.au" class="email">david@rodgers-plumbing.com.au</a>
+          <span class="meta">Mon–Fri 7am–5pm · 24/7 Emergency</span>
+          <span class="meta-sm" style="margin-top:6px">Lic. No. 487795C</span>
+          <span class="meta-sm">ABN 99 679 344 499</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Quick Links</div>
+        <div class="footer-col-links">
+          <div class="footer-links-group">
+            <a href="/">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+          </div>
+          <div class="footer-links-group">
+            <a href="#reviews">Reviews</a>
+            <a href="#contact-1">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2026 Rodgers Plumbing and Drainage Pty Ltd</span>
+      <button class="back-to-top" id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- STICKY CALL -->
+  <a href="tel:0401769948" class="sticky-call" id="sticky-call" aria-label="Call David Rodgers now">
+    <span class="call-dot" aria-hidden="true"></span>
+    Call David Now &nbsp;·&nbsp; 0401 769 948
+  </a>
+
+  <!-- Behold Instagram widget -->
+  <script type="module" src="https://w.behold.so/widget.js"></script>
+  <!-- Site JS — external file keeps CSP script-src free of unsafe-inline -->
+  <script src="site.js" defer></script>
+
+</body>
+</html>
