@@ -273,6 +273,7 @@ document.getElementById('contact-form').addEventListener('submit', async e => {
         name:    form['f-name'].value,
         email:   form['f-email'].value,
         suburb:  form['f-suburb'].value,
+        service: form['f-service'] ? form['f-service'].value : '',
         message: form['f-message'].value,
         website: form['website'].value, // honeypot — Worker checks this too
       }),
@@ -297,22 +298,64 @@ document.getElementById('contact-form').addEventListener('submit', async e => {
   }
 });
 
-// ── STICKY CTA + BACK TO TOP ─────────────────────────────────
-const stickyCta = document.getElementById('sticky-call');
-const backToTop = document.getElementById('back-to-top');
+// ── STICKY CTA + WHATSAPP + BACK TO TOP ──────────────────────
+const stickyCta   = document.getElementById('sticky-call');
+const whatsappBtn = document.getElementById('whatsapp-btn');
+const backToTop   = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
-  const nearBottom =
+  const scrolled    = window.scrollY > 400;
+  const nearBottom  =
     window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 220;
 
-  // Hide CTA when near the footer so it doesn't clash
-  stickyCta.classList.toggle('show', window.scrollY > 400 && !nearBottom);
+  stickyCta.classList.toggle('show', scrolled && !nearBottom);
+  // WhatsApp button shows alongside the call CTA
+  if (whatsappBtn) whatsappBtn.classList.toggle('show', scrolled && !nearBottom);
   backToTop.classList.toggle('show', nearBottom);
 }, { passive: true });
 
 // Back-to-top click — bound here because inline onclick is blocked by the CSP
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ── STICKY CTA — TIME-CONDITIONAL TEXT ───────────────────────
+// Uses the visitor's local time as a proxy. David is on AEST/AEDT
+// and most Northern Beaches visitors will be in the same zone.
+(function updateCtaAvailability() {
+  const now  = new Date();
+  const day  = now.getDay();  // 0 = Sun, 6 = Sat
+  const hour = now.getHours();
+  const isBusinessHours = day >= 1 && day <= 5 && hour >= 7 && hour < 17;
+
+  const secondaryEl = document.querySelector('.call-secondary');
+  if (!secondaryEl) return;
+
+  if (isBusinessHours) {
+    secondaryEl.innerHTML =
+      '<span class="call-avail-dot" aria-hidden="true"></span>0401 769 948 &middot; Available now';
+  } else {
+    secondaryEl.innerHTML =
+      '0401 769 948 &middot; 24/7 emergency line';
+  }
+})();
+
+// ── FAQ ACCORDION ────────────────────────────────────────────
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all open items first
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    // Open the clicked item (unless it was already open)
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
 });
 
 // ── CONTACT FORM WIGGLE ON SCROLL INTO VIEW ──────────────────
