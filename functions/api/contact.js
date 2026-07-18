@@ -16,13 +16,9 @@
 const ALLOWED_ORIGINS = [
   'https://rodgers-plumbing.com.au',
   'https://www.rodgers-plumbing.com.au',
-  // Local dev — remove before going live if you want to be strict
-  'http://localhost:5500',
-  'http://127.0.0.1:5500',
-  'http://localhost:3000',
 ];
 
-const MAX_LENGTHS = { name: 100, email: 254, suburb: 100, message: 2000 };
+const MAX_LENGTHS = { name: 100, email: 254, phone: 30, suburb: 100, service: 60, message: 2000 };
 
 /** Strip HTML tags and dangerous characters */
 function sanitise(str) {
@@ -72,7 +68,9 @@ export async function onRequestPost({ request, env }) {
   // 4. Sanitise and enforce length limits
   const name    = sanitise(body.name).slice(0, MAX_LENGTHS.name);
   const email   = sanitise(body.email).slice(0, MAX_LENGTHS.email);
+  const phone   = sanitise(body.phone).slice(0, MAX_LENGTHS.phone);
   const suburb  = sanitise(body.suburb).slice(0, MAX_LENGTHS.suburb);
+  const service = sanitise(body.service).slice(0, MAX_LENGTHS.service);
   const message = sanitise(body.message).slice(0, MAX_LENGTHS.message);
 
   // 5. Server-side validation
@@ -91,7 +89,7 @@ export async function onRequestPost({ request, env }) {
     const upstream = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, suburb, message }),
+      body: JSON.stringify({ name, email, phone, suburb, service, message }),
     });
 
     if (!upstream.ok) {

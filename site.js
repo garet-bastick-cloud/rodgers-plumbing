@@ -6,10 +6,7 @@
 const nav       = document.getElementById('nav');
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
-
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
+const heroLogo  = document.getElementById('hero-logo');
 
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
@@ -84,13 +81,16 @@ const SERVICES = [
   },
 ];
 
-const stage  = document.getElementById('carousel-stage');
-const dotsEl = document.getElementById('carousel-dots');
+const stage    = document.getElementById('carousel-stage');
+const dotsEl   = document.getElementById('carousel-dots');
+const pauseBtn = document.getElementById('carousel-pause');
+const liveEl   = document.getElementById('carousel-live');
 let active      = 0;
 let dragging    = false;
 let dragX       = 0;
 let dragTarget  = null;
 let timer       = null;
+let paused      = false;
 const N         = SERVICES.length;
 
 // Build cards
@@ -177,6 +177,9 @@ function render() {
     dots[i].classList.toggle('is-active', isActive);
     dots[i].setAttribute('aria-selected', String(isActive));
   }
+
+  // Announce the slide change to screen readers (WCAG 2.2.2)
+  if (liveEl) liveEl.textContent = `Now showing: ${SERVICES[active].title}`;
 }
 
 function goTo(i) {
@@ -187,7 +190,33 @@ function goTo(i) {
 
 function startTimer() {
   clearInterval(timer);
+  if (paused) return; // user hit pause — don't auto-advance
   timer = setInterval(() => { active = (active + 1) % N; render(); }, 3500);
+}
+
+// Pause/play control — WCAG 2.2.2 (moving content must be pausable)
+if (pauseBtn) {
+  pauseBtn.addEventListener('click', () => {
+    paused = !paused;
+    if (paused) {
+      clearInterval(timer);
+      pauseBtn.textContent = '▶';
+      pauseBtn.setAttribute('aria-label', 'Play slideshow');
+    } else {
+      pauseBtn.textContent = '⏸';
+      pauseBtn.setAttribute('aria-label', 'Pause slideshow');
+      startTimer();
+    }
+  });
+}
+
+// Pause auto-advance while keyboard focus is inside the carousel
+const carouselWrap = document.querySelector('.carousel-wrap');
+if (carouselWrap) {
+  carouselWrap.addEventListener('focusin', () => clearInterval(timer));
+  carouselWrap.addEventListener('focusout', e => {
+    if (!carouselWrap.contains(e.relatedTarget)) startTimer();
+  });
 }
 
 stage.addEventListener('pointerdown', e => {
@@ -253,6 +282,26 @@ document.getElementById('contact-form').addEventListener('submit', async e => {
   const successEl = document.getElementById('form-success');
   const form      = e.target;
 
+  // Required field validation
+  const nameEl    = form['f-name'];
+  const emailEl   = form['f-email'];
+  const phoneEl   = form['f-phone'];
+  const serviceEl = form['f-service'];
+  let validationFailed = false;
+
+  [nameEl, emailEl, phoneEl, serviceEl].forEach(el => el.classList.remove('invalid'));
+
+  if (!nameEl.value.trim()) { nameEl.classList.add('invalid'); validationFailed = true; }
+  if (!emailEl.value.trim() || !emailEl.checkValidity()) { emailEl.classList.add('invalid'); validationFailed = true; }
+  if (!phoneEl.value.trim()) { phoneEl.classList.add('invalid'); validationFailed = true; }
+  if (!serviceEl.value) { serviceEl.classList.add('invalid'); validationFailed = true; }
+
+  if (validationFailed) {
+    errorEl.textContent = 'Please fill in your name, email, phone number, and what you need help with.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
   // Client-side rate limit
   const lastSubmit = sessionStorage.getItem(RATE_LIMIT_KEY);
   if (lastSubmit && Date.now() - parseInt(lastSubmit, 10) < RATE_LIMIT_MS) {
@@ -272,6 +321,7 @@ document.getElementById('contact-form').addEventListener('submit', async e => {
       body: JSON.stringify({
         name:    form['f-name'].value,
         email:   form['f-email'].value,
+        phone:   form['f-phone'].value,
         suburb:  form['f-suburb'].value,
         service: form['f-service'] ? form['f-service'].value : '',
         message: form['f-message'].value,
@@ -303,15 +353,25 @@ const stickyCta   = document.getElementById('sticky-call');
 const whatsappBtn = document.getElementById('whatsapp-btn');
 const backToTop   = document.getElementById('back-to-top');
 
+// Single rAF-throttled scroll handler — nav blur, hero logo,
+// sticky CTA, WhatsApp button and back-to-top share one pass.
+let rafPending = false;
 window.addEventListener('scroll', () => {
-  const scrolled    = window.scrollY > 400;
-  const nearBottom  =
-    window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 220;
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    rafPending = false;
+    const scrollY    = window.scrollY;
+    const nearBottom = scrollY + window.innerHeight >= document.documentElement.scrollHeight - 220;
 
-  stickyCta.classList.toggle('show', scrolled && !nearBottom);
-  // WhatsApp button shows alongside the call CTA
-  if (whatsappBtn) whatsappBtn.classList.toggle('show', scrolled && !nearBottom);
-  backToTop.classList.toggle('show', nearBottom);
+    nav.classList.toggle('scrolled', scrollY > 20);
+    // Hero logo fades out as nav logo fades in
+    if (heroLogo) heroLogo.classList.toggle('scrolled-out', scrollY > 60);
+    stickyCta.classList.toggle('show', scrollY > 400 && !nearBottom);
+    // WhatsApp button shows alongside the call CTA
+    if (whatsappBtn) whatsappBtn.classList.toggle('show', scrollY > 400 && !nearBottom);
+    backToTop.classList.toggle('show', nearBottom);
+  });
 }, { passive: true });
 
 // Back-to-top click — bound here because inline onclick is blocked by the CSP
@@ -339,39 +399,3 @@ backToTop.addEventListener('click', () => {
       '0401 769 948 &middot; 24/7 emergency line';
   }
 })();
-
-// ── FAQ ACCORDION ────────────────────────────────────────────
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    // Close all open items first
-    document.querySelectorAll('.faq-item.open').forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-    });
-    // Open the clicked item (unless it was already open)
-    if (!isOpen) {
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-// ── CONTACT FORM WIGGLE ON SCROLL INTO VIEW ──────────────────
-const formCard = document.querySelector('.contact-form-card');
-if (formCard) {
-  const wiggleObs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      // Small delay so the user sees the card settle first
-      setTimeout(() => {
-        formCard.classList.add('wiggle');
-        formCard.addEventListener('animationend', () => {
-          formCard.classList.remove('wiggle');
-        }, { once: true });
-      }, 250);
-      wiggleObs.disconnect();
-    }
-  }, { threshold: 0.4 });
-  wiggleObs.observe(formCard);
-}
