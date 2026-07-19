@@ -18,123 +18,13 @@
   <link rel="preconnect" href="https://framerusercontent.com" />
   <link rel="dns-prefetch" href="https://framerusercontent.com" />
   <link rel="dns-prefetch" href="https://w.behold.so" />
-  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- =====================================================
-       STRUCTURED DATA — LocalBusiness + Plumber + FAQ
-       ===================================================== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "Plumber"],
-    "name": "Rodgers Plumbing & Drainage",
-    "url": "https://rodgers-plumbing.com.au",
-    "logo": "https://rodgers-plumbing.com.au/images/logo.jpg",
-    "image": "https://rodgers-plumbing.com.au/images/og.png",
-    "telephone": "+61401769948",
-    "email": "david@rodgers-plumbing.com.au",
-    "description": "Licensed plumber on the Northern Beaches, Sydney. Blocked drains, CCTV inspection, hot water systems, gasfitting, new builds and 24/7 emergency callouts. Direct line to the tradesman — no call centres.",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "NSW",
-      "addressCountry": "AU"
-    },
-    "areaServed": [
-      "Manly", "Dee Why", "Narrabeen", "Mona Vale", "Avalon Beach",
-      "Newport", "Palm Beach", "Collaroy", "Curl Curl", "Freshwater",
-      "Brookvale", "Seaforth", "Balgowlah", "Allambie Heights", "Warriewood"
-    ],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "07:00",
-        "closes": "17:00"
-      }
-    ],
-    "hasCredential": "NSW Contractor Licence 487795C",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "ratingCount": "1",
-      "reviewCount": "1"
-    },
-    "sameAs": [
-      "https://www.instagram.com/rodgersplumbinganddrainage/"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Are you available for emergency plumbing on the Northern Beaches?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. David is available 24/7 for emergency callouts across the Northern Beaches — burst pipes, overflowing drains, gas leaks, and hot water failures. Call 0401 769 948 any time."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you charge a call-out fee?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No call-out fee. You'll receive an upfront quote before any work begins — no surprises on the invoice."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are you a licensed and insured plumber in NSW?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. David holds NSW Contractor Licence 487795C and is fully insured with public liability cover. You can verify the licence at NSW Fair Trading."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which suburbs do you service?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Rodgers Plumbing & Drainage services the entire Northern Beaches — from Manly and Seaforth in the south to Palm Beach and Avalon in the north, including Dee Why, Narrabeen, Mona Vale, Newport, Collaroy, Freshwater, Brookvale, Curl Curl, and surrounds."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are you licensed to do gasfitting work in NSW?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. David is licensed for gasfitting work in NSW — including BBQ connections, gas cooktops, heaters, and new gas line installations. All gasfitting work is compliant with NSW regulations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How quickly can you get to me?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "For non-urgent work, same-day or next-day visits are typically available. For emergencies, David aims to respond as fast as possible — call 0401 769 948 for an immediate ETA."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you work on new builds and renovations?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Rodgers Plumbing & Drainage handles full rough-in and fit-off for new builds and renovations, working alongside builders from slab to handover across the Northern Beaches."
-        }
-      }
-    ]
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ========================================
        RESET & BASE
        ======================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       background: #000;
       color: #fff;
@@ -165,17 +55,6 @@
       transition: top 0.2s ease;
     }
     .skip-link:focus { top: 0; }
-
-    /* Screen-reader-only text — visually hidden, still announced */
-    .sr-only {
-      position: absolute;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-      border: 0;
-    }
 
     /* Visible keyboard focus — mid-blue reads on both black and white sections */
     a:focus-visible,
@@ -241,15 +120,7 @@
       -webkit-backdrop-filter: blur(20px);
       border-bottom-color: rgba(255,255,255,0.08);
     }
-    /* Nav logo fades in on scroll — starts invisible */
-    .nav-logo img {
-      height: 32px;
-      width: auto;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-    }
-    .nav.scrolled .nav-logo img { opacity: 1; transform: translateY(0); }
+    .nav-logo img { height: 32px; width: auto; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -351,31 +222,6 @@
       align-items: center;
       gap: 24px;
     }
-    /* Hero logo — large, centred, fades + scales out on scroll */
-    .hero-logo {
-      width: auto;
-      height: clamp(56px, 10vw, 84px);
-      object-fit: contain;
-      opacity: 1;
-      transform: scale(1) translateY(0);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      will-change: opacity, transform;
-      margin-bottom: 8px;
-    }
-    .hero-logo.scrolled-out {
-      opacity: 0;
-      transform: scale(0.82) translateY(-12px);
-    }
-    .hero-eyebrow {
-      display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: -10px;
-    }
     .hero-h1 {
       font-family: 'Afacad', sans-serif;
       font-size: clamp(3rem, 7vw, 4.7rem);
@@ -457,26 +303,6 @@
       flex-wrap: wrap;
       gap: 12px;
       justify-content: center;
-    }
-    .hero-emergency {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.25);
-      padding-bottom: 2px;
-      transition: color 0.2s;
-    }
-    .hero-emergency:hover { color: #fff; }
-    .hero-emergency-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #ef4444;
-      flex-shrink: 0;
     }
     .btn-secondary {
       display: inline-flex;
@@ -599,7 +425,7 @@
       line-height: 1;
       letter-spacing: -0.04em;
     }
-    .stat-label { font-size: 0.82rem; color: rgba(0,0,0,0.6); margin-top: 6px; }
+    .stat-label { font-size: 0.82rem; color: rgba(0,0,0,0.5); margin-top: 6px; }
 
     /* ========================================
        SERVICES
@@ -693,21 +519,6 @@
       transition: width 0.45s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.3s ease;
     }
     .carousel-dot.is-active { width: 28px; background: #fff; }
-    .carousel-pause {
-      width: 34px; height: 34px;
-      margin-top: -24px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.8);
-      font-size: 0.8rem;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .carousel-pause:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.45); color: #fff; }
 
     /* ========================================
        TESTIMONIALS
@@ -764,7 +575,7 @@
       max-width: 600px;
     }
     .instagram-header .h2 { color: #fff; }
-    .instagram-subtext { font-size: 1rem; color: rgba(255,255,255,0.65); letter-spacing: -0.02em; }
+    .instagram-subtext { font-size: 1rem; color: rgba(255,255,255,0.5); letter-spacing: -0.02em; }
     .instagram-subtext a {
       color: rgba(255,255,255,0.75);
       text-decoration: underline;
@@ -775,14 +586,14 @@
     /* ========================================
        CONTACT
        ======================================== */
-    #contact {
+    #contact-1 {
       background: #fff;
       width: 100%;
       display: flex;
       justify-content: center;
       padding: 80px 30px;
     }
-    #contact .container {
+    #contact-1 .container {
       display: grid;
       grid-template-columns: 260px 1fr;
       gap: 80px;
@@ -799,13 +610,13 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(0,0,0,0.55);
+      color: rgba(0,0,0,0.4);
       margin-bottom: 4px;
     }
     .contact-sidebar-primary { font-size: 0.95rem; color: rgba(0,0,0,0.7); line-height: 1.6; }
-    .contact-sidebar-sub { font-size: 0.82rem; color: rgba(0,0,0,0.55); }
+    .contact-sidebar-sub { font-size: 0.82rem; color: rgba(0,0,0,0.4); }
     .contact-sidebar-divider { border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 8px 0; }
-    .contact-sidebar-meta { font-size: 0.72rem; color: rgba(0,0,0,0.55); }
+    .contact-sidebar-meta { font-size: 0.72rem; color: rgba(0,0,0,0.35); }
     .contact-form-card {
       background: #fff;
       border-radius: 15px;
@@ -822,25 +633,6 @@
     .form-fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
     .form-field { display: flex; flex-direction: column; gap: 6px; }
     .form-field label { font-size: 0.78rem; font-weight: 600; color: rgba(0,0,0,0.5); letter-spacing: 0.02em; }
-    .form-field select {
-      width: 100%;
-      padding: 11px 15px;
-      border: 1px solid rgba(0,0,0,0.14);
-      border-radius: 10px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.93rem;
-      color: #111;
-      background: #fafafa;
-      outline: none;
-      appearance: none;
-      -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      cursor: pointer;
-      transition: border-color 0.2s, background-color 0.2s;
-    }
-    .form-field select:focus { border-color: rgba(0,0,0,0.35); background-color: #fff; }
     .form-field input,
     .form-field textarea {
       width: 100%;
@@ -857,8 +649,6 @@
     }
     .form-field input:focus,
     .form-field textarea:focus { border-color: rgba(0,0,0,0.35); background: #fff; }
-    .form-field input.invalid,
-    .form-field select.invalid { border-color: rgb(200,40,40); }
     .form-field textarea { min-height: 110px; }
     .btn-submit {
       width: 100%;
@@ -895,17 +685,14 @@
     }
 
     /* ========================================
-       FOOTER — sticky reveal
-       The footer sits behind the main content (z-index 0).
-       As the page scrolls, main content peels away and
-       the footer is revealed at the bottom of the viewport.
+       FOOTER
        ======================================== */
     footer {
       background: #000;
       border-radius: 24px 24px 0 0;
-      position: sticky;
-      bottom: 0;
-      z-index: 0;
+      margin-top: -24px;
+      position: relative;
+      z-index: 2;
       overflow: hidden;
     }
     .footer-suburb-marquee {
@@ -952,10 +739,10 @@
       font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.45);
       margin-top: 4px;
     }
-    .footer-tagline-sub { font-size: 0.68rem; color: rgba(255,255,255,0.5); max-width: 460px; }
+    .footer-tagline-sub { font-size: 0.68rem; color: rgba(255,255,255,0.35); max-width: 460px; }
     .footer-review-link {
       display: inline-flex;
       align-items: center;
@@ -988,7 +775,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.45);
       margin-bottom: 16px;
     }
     .footer-col-links { display: flex; gap: 28px; }
@@ -998,10 +785,10 @@
     .footer-contact-info { display: flex; flex-direction: column; gap: 7px; }
     .footer-contact-info .phone { font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 500; transition: color 0.2s; }
     .footer-contact-info .phone:hover { color: #fff; }
-    .footer-contact-info .email { font-size: 0.72rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .footer-contact-info .email { font-size: 0.72rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
     .footer-contact-info .email:hover { color: rgba(255,255,255,0.85); }
-    .footer-contact-info .meta { font-size: 0.7rem; color: rgba(255,255,255,0.65); }
-    .footer-contact-info .meta-sm { font-size: 0.68rem; color: rgba(255,255,255,0.65); }
+    .footer-contact-info .meta { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
+    .footer-contact-info .meta-sm { font-size: 0.68rem; color: rgba(255,255,255,0.35); }
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.1);
       padding: 16px 48px;
@@ -1011,7 +798,7 @@
       flex-wrap: wrap;
       gap: 12px;
     }
-    .footer-copyright { font-size: 0.68rem; color: rgba(255,255,255,0.65); }
+    .footer-copyright { font-size: 0.68rem; color: rgba(255,255,255,0.4); }
     .back-to-top {
       width: 34px; height: 34px;
       border-radius: 50%;
@@ -1036,162 +823,104 @@
       position: fixed;
       bottom: 24px;
       left: 50%;
-      transform: translateX(-50%) translateY(120px);
+      transform: translateX(-50%) translateY(100px);
       z-index: 200;
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      padding: 12px 22px 12px 12px;
-      background: linear-gradient(135deg, #6272f2 0%, #4a5ce8 100%);
+      gap: 10px;
+      padding: 14px 28px;
+      background: #0c4fb5;
       color: #fff;
       border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
       white-space: nowrap;
-      min-width: 290px;
-      box-shadow: 0 12px 40px rgba(80,100,235,0.48), 0 3px 10px rgba(0,0,0,0.18);
-      transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease, box-shadow 0.2s;
+      box-shadow: 0 8px 32px rgba(14,165,233,0.45), 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
       opacity: 0;
       overflow: hidden;
       isolation: isolate;
     }
-    .sticky-call.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-    .sticky-call:hover {
-      box-shadow: 0 16px 50px rgba(80,100,235,0.6), 0 4px 14px rgba(0,0,0,0.22);
-      transform: translateX(-50%) translateY(-2px);
-    }
-    /* ── Primary wave ───────────────────────────────────────────
-       Wide element with a highly elliptical top edge — this makes
-       the "wave crest" shape pronounced instead of a flat line.
-       Rocking the pivot from below creates the sloshing liquid
-       motion where one side rises as the other falls.           */
+    .sticky-call.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    /* Water swirl — rotating conic gradient clipped to the pill */
     .sticky-call::before {
       content: '';
       position: absolute;
-      left: -35%; bottom: -8%;
-      width: 170%; height: 56%;
-      background: linear-gradient(
-        180deg,
-        rgba(130,210,255,0.42) 0%,
-        rgba(95,185,255,0.28) 45%,
-        rgba(65,155,245,0.2) 100%
+      top: 50%; left: 50%;
+      width: 300%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg at 50% 50%,
+        #0a3d9e 0deg,
+        #1a73e8 55deg,
+        #5bbaff 115deg,
+        #0ea5e9 175deg,
+        #0c55b5 235deg,
+        #0369a1 295deg,
+        #0a3d9e 360deg
       );
-      /* Asymmetric ellipse — one side crests higher than the other.
-         As it rocks, the crest travels across like a real wave.   */
-      border-radius: 42% 58% 0 0 / 58% 58% 0 0;
-      transform-origin: 50% 112%;
-      animation: wave-a 2.8s ease-in-out infinite;
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: water-swirl 5s linear infinite;
       z-index: -1;
     }
-    /* ── Secondary wave ─────────────────────────────────────────
-       Mirror-asymmetry, opposite starting phase, slightly slower.
-       The two waves interfere — where crests meet the surface
-       brightens; where trough meets crest it flattens out.
-       That interference is what makes it read as liquid.        */
+    /* Light caustic shimmer */
     .sticky-call::after {
       content: '';
       position: absolute;
-      left: -35%; bottom: -8%;
-      width: 170%; height: 54%;
+      inset: 0;
       background: linear-gradient(
-        180deg,
-        rgba(195,240,255,0.32) 0%,
-        rgba(150,218,255,0.16) 30%,
-        transparent 62%
+        108deg,
+        transparent 25%,
+        rgba(255,255,255,0.22) 44%,
+        rgba(255,255,255,0.09) 56%,
+        transparent 74%
       );
-      border-radius: 58% 42% 0 0 / 52% 52% 0 0;
-      transform-origin: 50% 112%;
-      animation: wave-b 3.6s ease-in-out infinite;
-      animation-delay: -1.8s; /* half-phase offset = counter-motion */
+      animation: water-shimmer 2.8s ease-in-out infinite;
       z-index: -1;
     }
-    @keyframes wave-a {
-      0%, 100% { transform: rotate(-4deg); }
-      50%       { transform: rotate(4deg); }
+    @keyframes water-swirl {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
     }
-    @keyframes wave-b {
-      0%, 100% { transform: rotate(3.5deg); }
-      50%       { transform: rotate(-3.5deg); }
+    @keyframes water-shimmer {
+      0%   { opacity: 0.5; transform: translateX(-18px); }
+      50%  { opacity: 1;   transform: translateX(18px); }
+      100% { opacity: 0.5; transform: translateX(-18px); }
     }
-    .call-icon-wrap {
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .call-text-block {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      flex: 1;
-    }
-    .call-primary {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-    }
-    .call-secondary {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.78);
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      letter-spacing: 0;
-    }
-    .call-avail-dot {
-      width: 6px; height: 6px;
+    .call-dot {
+      position: relative;
+      z-index: 1;
+      width: 8px; height: 8px;
       border-radius: 50%;
       background: #4ade80;
       flex-shrink: 0;
       animation: pulse-dot 2s infinite;
     }
-    .call-chevron {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.55);
-      flex-shrink: 0;
-      line-height: 1;
+    .call-label {
+      position: relative;
+      z-index: 1;
     }
     @keyframes pulse-dot {
-      0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.7); }
-      70%  { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+      0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+      70% { box-shadow: 0 0 0 7px rgba(74,222,128,0); }
       100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
     }
 
     /* ========================================
-       WHATSAPP BUTTON
+       FORM WIGGLE
        ======================================== */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 200;
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 24px rgba(37,211,102,0.45), 0 3px 8px rgba(0,0,0,0.2);
-      opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.2s;
-      pointer-events: none;
+    @keyframes form-wiggle {
+      0%   { transform: translateX(0) rotate(0deg); }
+      15%  { transform: translateX(-5px) rotate(-0.4deg); }
+      30%  { transform: translateX(5px) rotate(0.4deg); }
+      45%  { transform: translateX(-3px) rotate(-0.2deg); }
+      60%  { transform: translateX(3px) rotate(0.2deg); }
+      75%  { transform: translateX(-1px); }
+      100% { transform: translateX(0); }
     }
-    .whatsapp-btn.show {
-      opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
-    }
-    .whatsapp-btn:hover {
-      box-shadow: 0 12px 32px rgba(37,211,102,0.6), 0 4px 12px rgba(0,0,0,0.25);
-      transform: scale(1.07);
+    .contact-form-card.wiggle {
+      animation: form-wiggle 0.65s ease-out;
     }
 
     /* ========================================
@@ -1203,23 +932,8 @@
       .nav-hamburger { display: flex; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-image { height: 320px; }
-      #contact .container { grid-template-columns: 1fr; gap: 0; }
-      /* Compact horizontal trust bar above the form card — keeps
-         hours + licence visible instead of hiding the sidebar */
-      .contact-sidebar {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-        padding: 14px 20px;
-        background: rgba(0,0,0,0.03);
-        border-radius: 10px;
-        margin-bottom: 16px;
-      }
-      .contact-sidebar-divider,
-      .contact-sidebar .sidebar-extra { display: none; }
-      .contact-sidebar-label { margin-bottom: 0; }
+      #contact-1 .container { grid-template-columns: 1fr; gap: 0; }
+      .contact-sidebar { display: none; }
       .contact-form-card { max-width: 100%; }
       .footer-columns { grid-template-columns: 1fr; padding: 28px 24px; gap: 28px; }
       .footer-col + .footer-col { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 28px; }
@@ -1248,10 +962,14 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#reviews">Reviews</a></li>
-      <li><a href="/faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact-1">Contact</a></li>
     </ul>
-    <a href="tel:0401769948" class="nav-cta">Call 0401 769 948</a>
+    <a href="tel:0401769948" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
+      </svg>
+      Call David
+    </a>
     <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -1263,32 +981,25 @@
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#reviews">Reviews</a>
-    <a href="/faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a href="tel:0401769948" class="mobile-cta">Call 0401 769 948</a>
+    <a href="#contact-1">Contact</a>
+    <a href="tel:0401769948" class="mobile-cta">Call David — 0401 769 948</a>
   </div>
 
-  <main id="main" style="position:relative;z-index:1;">
+  <main id="main">
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <img
-        src="https://framerusercontent.com/images/pRqdhZYJE505x14Qnt74DBlVtQY.jpg"
-        alt="Rodgers Plumbing &amp; Drainage"
-        class="hero-logo"
-        id="hero-logo"
-      />
-      <span class="hero-eyebrow">Northern Beaches Plumber — Sydney</span>
       <h1 class="hero-h1">Done Right. No Drama.</h1>
+      <p class="hero-body">Residential and commercial plumbing for the Northern Beaches. Blocked drains, gasfitting, new builds, CCTV inspection — done properly, on time, by a local who gives a damn.</p>
       <div class="hero-chips">
-        <span class="chip"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>10 Years Experience</span>
-        <span class="chip"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Licensed &amp; Fully Insured</span>
-        <span class="chip"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Northern Beaches Local</span>
+        <span class="chip">✓ 10 Years Experience</span>
+        <span class="chip">✓ Licensed &amp; Fully Insured</span>
+        <span class="chip">✓ Northern Beaches Local</span>
       </div>
       <div class="hero-cta-row">
         <a href="tel:0401769948" class="btn-primary">Call 0401 769 948</a>
-        <a href="#contact" class="btn-secondary">Get a Quote</a>
+        <a href="#contact-1" class="btn-secondary">Get a Quote</a>
       </div>
     </div>
   </section>
@@ -1296,35 +1007,22 @@
   <!-- MARQUEE STRIP -->
   <div class="marquee-strip" aria-hidden="true">
     <div class="marquee-track">
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Licensed &amp; Fully Insured</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>No Call-Out Fees</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Same-Day Response</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Northern Beaches Local</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>10 Years Experience</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Direct Line to David</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>24/7 Emergency Callouts</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Licensed &amp; Fully Insured</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>No Call-Out Fees</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Same-Day Response</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Northern Beaches Local</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>10 Years Experience</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Direct Line to David</span><span class="marquee-dot"></span>
-      <span class="marquee-item"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>24/7 Emergency Callouts</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Licensed &amp; Fully Insured</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ No Call-Out Fees</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Same-Day Response</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Northern Beaches Local</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 10 Years Experience</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Direct Line to David</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 24/7 Emergency Callouts</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Licensed &amp; Fully Insured</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ No Call-Out Fees</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Same-Day Response</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Northern Beaches Local</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 10 Years Experience</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ Direct Line to David</span><span class="marquee-dot"></span>
+      <span class="marquee-item">✓ 24/7 Emergency Callouts</span><span class="marquee-dot"></span>
     </div>
   </div>
-
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2 class="h2">Every Job, Done to a Standard.</h2>
-      <div class="carousel-wrap">
-        <div class="carousel-stage" id="carousel-stage" role="group" aria-roledescription="carousel" aria-label="Plumbing services"></div>
-        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Service slides"></div>
-        <button type="button" id="carousel-pause" class="carousel-pause" aria-label="Pause slideshow">⏸</button>
-        <span id="carousel-live" aria-live="polite" class="sr-only"></span>
-      </div>
-    </div>
-  </section>
 
   <!-- ABOUT -->
   <section id="about" class="section">
@@ -1335,8 +1033,7 @@
         </div>
         <div class="about-text">
           <h2 class="h2">A Northern Beaches Plumber Who Shows Up.</h2>
-          <p class="body-l">David Rodgers has been fixing, fitting, and building across the Northern Beaches for over a decade — from Manly to Palm Beach, Brookvale to Mona Vale. While other companies put you through a call centre and send whoever's available, with Rodgers Plumbing &amp; Drainage you're dealing directly with the tradesman — from the first call to the final invoice. Upfront pricing, no hidden fees, and a clean finish every time.</p>
-          <p class="body-l" style="font-size:0.85rem; color:rgba(0,0,0,0.55); margin-top:-8px;">Lic. 487795C &nbsp;·&nbsp; Public Liability Insured &nbsp;·&nbsp; ABN 99 679 344 499</p>
+          <p class="body-l">David Rodgers has been fixing, fitting, and building on the Northern Beaches for over a decade. While other companies put you through a call centre and send whoever's available, with Rodgers Plumbing &amp; Drainage you're dealing directly with the tradesman — from the first call to the final invoice.</p>
         </div>
       </div>
       <div class="stats-row" id="stats-row">
@@ -1348,10 +1045,21 @@
           <div class="stat-number" data-target="500" data-suffix="+">0+</div>
           <div class="stat-label">Projects completed</div>
         </div>
-        <a href="https://g.page/r/CeIw4HrxgHkZEAE" target="_blank" rel="noopener noreferrer" class="stat-item" style="text-decoration:none;">
+        <div class="stat-item">
           <div class="stat-number" data-target="5" data-suffix="★">0★</div>
-          <div class="stat-label">5★ on Google ↗</div>
-        </a>
+          <div class="stat-label">Average Google rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="h2">Every Job, Done to a Standard.</h2>
+      <div class="carousel-wrap">
+        <div class="carousel-stage" id="carousel-stage" role="group" aria-roledescription="carousel" aria-label="Plumbing services"></div>
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Service slides"></div>
       </div>
     </div>
   </section>
@@ -1375,28 +1083,28 @@
     <div class="container">
       <div class="instagram-header">
         <h2 class="h2">On The Tools.</h2>
-        <p class="instagram-subtext">Photos from the job site. <a href="https://www.instagram.com/rodgersplumbinganddrainage/" target="_blank" rel="noopener noreferrer">Follow along</a></p>
+        <p class="instagram-subtext">Photos from the job site. <a href="https://www.instagram.com/rodgersplumbinganddrainage/" target="_blank" rel="noopener noreferrer">Follow along 📷</a></p>
       </div>
       <behold-widget feed-id="IC7pQnpnUAVYuQkOpMde"></behold-widget>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact-1">
     <div class="container">
       <div class="contact-sidebar">
         <div class="contact-sidebar-label">Get In Touch</div>
         <div class="contact-sidebar-primary">Prefer to talk? David picks up.</div>
         <div class="contact-sidebar-sub">Mon–Fri 7am–5pm · 24/7 Emergency</div>
         <hr class="contact-sidebar-divider" />
-        <div class="contact-sidebar-meta sidebar-extra">ABN 99 679 344 499</div>
+        <div class="contact-sidebar-meta">ABN 99 679 344 499</div>
         <div class="contact-sidebar-meta">Contractor Licence 487795C</div>
       </div>
       <div>
         <div class="contact-form-card">
           <div id="form-success" class="form-success" role="status" aria-live="polite" tabindex="-1">
             <div class="form-success-title">Cheers!</div>
-            <div class="form-success-sub">David will call you back within the hour during business hours, or first thing the next morning.</div>
+            <div class="form-success-sub">We'll be in touch soon.</div>
           </div>
           <form id="contact-form">
             <div class="form-title">Tell us what you need</div>
@@ -1415,29 +1123,12 @@
                 <input type="email" id="f-email" name="email" placeholder="you@example.com.au" required autocomplete="email" maxlength="254" />
               </div>
               <div class="form-field">
-                <label for="f-phone">Your Phone</label>
-                <input type="tel" id="f-phone" name="phone" placeholder="0401 234 567" required autocomplete="tel" maxlength="30" />
-              </div>
-              <div class="form-field">
                 <label for="f-suburb">Your Suburb</label>
                 <input type="text" id="f-suburb" name="suburb" placeholder="Manly" autocomplete="address-level2" maxlength="100" />
               </div>
               <div class="form-field">
-                <label for="f-service">What do you need help with?</label>
-                <select id="f-service" name="service" required>
-                  <option value="" disabled selected>Select a service…</option>
-                  <option value="blocked-drain">Blocked Drain / CCTV Inspection</option>
-                  <option value="hot-water">Hot Water System</option>
-                  <option value="emergency">Emergency Callout</option>
-                  <option value="gasfitting">Gasfitting</option>
-                  <option value="renovation">New Build / Renovation</option>
-                  <option value="maintenance">General Maintenance</option>
-                  <option value="other">Other / Not Sure</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label for="f-message">Any details? (optional)</label>
-                <textarea id="f-message" name="message" placeholder="Extra context helps David prepare..." maxlength="2000"></textarea>
+                <label for="f-message">What do you need?</label>
+                <textarea id="f-message" name="message" placeholder="Blocked drain, hot water system, renovation..." maxlength="2000"></textarea>
               </div>
             </div>
             <button type="submit" class="btn-submit" id="submit-btn">Send Enquiry</button>
@@ -1512,9 +1203,7 @@
           </div>
           <div class="footer-links-group">
             <a href="#reviews">Reviews</a>
-            <a href="/faq">FAQ</a>
-            <a href="#contact">Contact</a>
-            <a href="/privacy">Privacy Policy</a>
+            <a href="#contact-1">Contact</a>
           </div>
         </div>
       </div>
@@ -1532,28 +1221,9 @@
   </footer>
 
   <!-- STICKY CALL -->
-  <a href="tel:0401769948" class="sticky-call" id="sticky-call" aria-label="Call David now — 0401 769 948">
-    <span class="call-icon-wrap" aria-hidden="true">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
-      </svg>
-    </span>
-    <span class="call-text-block">
-      <span class="call-primary">Call David Now</span>
-      <span class="call-secondary">
-        <span class="call-avail-dot" aria-hidden="true"></span>
-        0401 769 948 &middot; Available now
-      </span>
-    </span>
-    <span class="call-chevron" aria-hidden="true">›</span>
-  </a>
-
-  <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/61401769948" class="whatsapp-btn" id="whatsapp-btn"
-     aria-label="Message David on WhatsApp" target="_blank" rel="noopener noreferrer">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
+  <a href="tel:0401769948" class="sticky-call" id="sticky-call" aria-label="Call David Rodgers now">
+    <span class="call-dot" aria-hidden="true"></span>
+    <span class="call-label">Call David Now &nbsp;·&nbsp; 0401 769 948</span>
   </a>
 
   <!-- Behold Instagram widget -->
